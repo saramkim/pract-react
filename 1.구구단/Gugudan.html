@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>구구단</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>-->
+    <!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
+    <script type="text/babel">
+      'use strict';
+
+      const generateRandomNumber = () => {
+        return Math.ceil(Math.random() * 9);
+      };
+
+      const GuGuDan = () => {
+        const [first, setFirst] = React.useState(generateRandomNumber());
+        const [second, setSecond] = React.useState(generateRandomNumber());
+        const [value, setValue] = React.useState('');
+        const [result, setResult] = React.useState('');
+        const inputEl = React.useRef(null);
+
+        const CORRECT = '정답';
+        const WRONG = '땡';
+
+        const onSubmitForm = (e) => {
+          e.preventDefault();
+          if (parseInt(value) === first * second) {
+            setResult(value + CORRECT);
+            setFirst(generateRandomNumber());
+            setSecond(generateRandomNumber());
+            setValue('');
+            inputEl.current.focus();
+          } else {
+            setResult(WRONG);
+            setValue('');
+            inputEl.current.focus();
+          }
+        };
+
+        return (
+          <div>
+            <div>
+              {first} 곱하기 {second} = ?
+            </div>
+            <form onSubmit={onSubmitForm}>
+              <input
+                ref={inputEl}
+                type='number'
+                value={value}
+                onChange={(e) => {
+                  setValue(e.target.value);
+                }}
+              />
+              <button>입력</button>
+            </form>
+            <div>{result}</div>
+          </div>
+        );
+      };
+    </script>
+    <script type="text/babel">
+      ReactDOM.createRoot(document.querySelector('#root')).render(<GuGuDan />);
+    </script>
+  </body>
+</html>
