@@ -2,7 +2,7 @@ const path = require('path');
 const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
-  name: 'numberbaseball-setting',
+  name: 'responsecheck-setting',
   mode: 'development',
   devtool: 'eval',
   resolve: {

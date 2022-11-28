@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  name: 'wordrelay-setting',
+  name: 'gugudan-setting',
   mode: 'development',
   devtool: 'eval',
   resolve: {
