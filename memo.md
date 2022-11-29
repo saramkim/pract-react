@@ -35,3 +35,6 @@ babel은 JSX를 원문법으로 바꿔준다.
   - memo 사용하면 개발자도구에서 이름이 제대로 안 뜨므로 displayName 이용.
 
 자식 컴포넌트에서 props를 직접 변경하지말고 state로 만든 후에 state를 바꿔라.
+
+- class와 달리 hooks를 이용하는 함수 컴포넌트는 리렌더링될 때마다 컴포넌트 전체가 렌더링된다.
+  - useEffect, useMemo, useCallback, useRef 활용
